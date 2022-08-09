@@ -9,13 +9,13 @@ namespace JwtAuthentication.Controllers
     [ApiController]
     public class SecuredController : ControllerBase
     {
-        [HttpGet]
-        public async Task<IActionResult> OnlyAuthenticationRequired()
+        [HttpGet("AuthenticationRequired")]
+        public async Task<IActionResult> AuthenticationRequired()
         {
             return Ok("This is available only for Authenticated Users. Yay, you are an Authenticated user.");
         }
 
-        [HttpPost]
+        [HttpPost("PostAsAdministrator")]
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> PostAsAdministrator()
         {
